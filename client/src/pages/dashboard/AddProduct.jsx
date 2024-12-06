@@ -73,9 +73,9 @@ function AddProduct() {
         <Sidebar />
       </div>
 
-      <div>
+      <div className='p-5'>
         <div className="p-4 bg-white shadow-md rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">Add Product</h2>
+          <h2 className="text-2xl font-bold mb-4">পণ্যে যোগ করুন</h2>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Product Name */}
