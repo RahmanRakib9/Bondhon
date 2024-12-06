@@ -5,13 +5,17 @@ import connectDB from './db';
 
 const app = express();
 
+/** Application Regular Middlewares */
 app.use(cors());
 app.use(express.json());
 connectDB();
 
-app.get('/',(req,res)=>{
-    res.send("hello from bondhon!")
+/** Health check Route */
+app.get('/', (req, res) => {
+    res.send("hello from Bondhon!")
 })
-app.use('/api/v1',rootRouter);
+
+/** Application Routes */
+app.use('/api/v1', rootRouter);
 
 app.listen(3000);
