@@ -9,7 +9,7 @@ import AddProduct from './pages/dashboard/AddProduct';
 function App() {
   return (
     <main className="mx-auto rounded-md">
-      <div className="max-w-screen-2xl mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <Navbar />
 
         <Routes>
@@ -20,8 +20,6 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard/products" element={<DashboardProducts />} />
           <Route path="/dashboard/add-product" element={<AddProduct />} />
-          {/* <Route path="/register" element={<Register />} /> */}
-          {/* Protected Routes  */}
 
           {/* <Route
             path="/dashboard/*"

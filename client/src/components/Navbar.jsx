@@ -32,7 +32,9 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className="mx-4">
+      {
+        !authData.user  && (
+          <div className="mx-4">
         <Link
           to="/signup"
           className="bg-[#97d139e7] text-green-900 py-1 px-4 rounded-full ring-2 ring-[#9dda3c]
@@ -41,6 +43,8 @@ function Navbar() {
           একাউন্ট খুলুন
         </Link>
       </div>
+        )
+      }
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -100,7 +104,7 @@ function Navbar() {
 
         {authData.user && (
           <div className="mx-4px">
-            <div>{authData?.user?.name}</div>
+            {/* <div>{authData?.user?.name}</div> */}
 
             {authData.user.role === 'FARMER' && (
               <div>
