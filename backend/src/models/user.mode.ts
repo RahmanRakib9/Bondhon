@@ -14,9 +14,17 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: [true, 'email is Required!'],
     },
+    phonenumber: {
+      type: String,
+      required: [true, 'Phonenumber is Required!'],
+    },
     password: {
       type: String,
       required: [true, 'password is Required!'],
+    },
+    role: {
+      type: String,
+      required: [true, 'ROLE is Required!'],
     },
   },
   { timestamps: true },
