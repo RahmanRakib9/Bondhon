@@ -12,12 +12,18 @@ async function handleRegisterUser(
         const userPayload: IUser = req.body;
 
         const user = await authServices.registerUser(userPayload);
+        const accessToken = await authServices.loginUser({
+            email: user.email,
+            password: req.body.password, 
+        });
+
 
         res.status(201).json({
             success: true,
             statusCode: 201,
             message: 'User created successfully',
             user,
+            accessToken
         });
     } catch (error) {
         next(error);
