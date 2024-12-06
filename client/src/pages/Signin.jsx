@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import apiClient from '../config/axiosConfig';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function Signin() {
+  const { setAuthData, authData } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
-
     password: '',
   });
 
@@ -18,19 +22,21 @@ function Signup() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       const res = await apiClient.post('/auth/login', formData);
-      if (!res.ok) {
-        toast.error();
-        throw new Error('Something went wrong!');
-      }
-      const data = await res.json();
 
-      console.log('Response:', data);
+      console.log('Response:', res.data);
+      const { accessToken, user } = res.data;
+      if (accessToken && user) {
+        localStorage.setItem('token', accessToken);
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+      setAuthData({ token: accessToken, user: res.data.user });
+      toast.success('Signin successful!');
+      navigate('/');
     } catch (err) {
-      setError(err.message);
+      console.error('Error:', err);
     }
   };
 
@@ -80,4 +86,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signin;
