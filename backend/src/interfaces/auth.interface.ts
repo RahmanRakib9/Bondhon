@@ -6,6 +6,6 @@ export interface IRegisterUser {
 }
 
 export interface ILoginUser {
-  phoneNumber: string;
+  email: string;
   password: string;
 }
