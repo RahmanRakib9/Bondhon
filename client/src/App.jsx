@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <main className="mx-auto rounded-md">
-      <div className="max-w-screen-2xl mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <Navbar />
 
         <Routes>
@@ -22,7 +22,6 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard/products" element={<DashboardProducts />} />
           <Route path="/dashboard/add-product" element={<AddProduct />} />
-          <Route path="/dashboard/get-help" element={<Gethelp />} />
           {/* <Route path="/register" element={<Register />} /> */}
           {/* Protected Routes  */}
 

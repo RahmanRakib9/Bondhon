@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import apiClient from '../config/axiosConfig';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signin() {
   const { setAuthData, authData } = useContext(AuthContext);
@@ -81,6 +81,12 @@ function Signin() {
             Login Now
           </button>
         </form>
+        <p className="my-4 text-textSecondary text-right">
+          আপনার কি একাউন্ট নেই?{' '}
+          <Link to="/signup" className="text-blue-500">
+           রেজিস্ট্রেশন করুন          
+         </Link>
+        </p>
       </div>
     </div>
   );

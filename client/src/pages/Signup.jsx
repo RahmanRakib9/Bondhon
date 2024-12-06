@@ -135,14 +135,6 @@ function Signup() {
           </Link>
         </p>
       </div>
-
-      {/* 
-      
-      
-      
-      
-      
-      */}
     </div>
   );
 }
