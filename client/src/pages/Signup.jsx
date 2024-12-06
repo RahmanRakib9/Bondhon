@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import apiClient from '../config/axiosConfig';
 import toast from 'react-hot-toast';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Signup() {
+  const { setAuthData, authData } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,34 +22,24 @@ function Signup() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleSubmit = async e => {
-    e.preventDefault(); // Prevent form reload
-    console.log('Form Data:', formData);
+    e.preventDefault();
 
     try {
       const res = await apiClient.post('/auth/signup', formData);
 
       console.log('Response:', res.data);
-      const { token } = res.data;
-      if (token) {
-        localStorage.setItem('token', token);
-        console.log('Token saved to localStorage:', token);
+      const { accessToken, user } = res.data;
+      if (accessToken && user) {
+        localStorage.setItem('token', accessToken);
+        localStorage.setItem('user', JSON.stringify(user));
       }
-
+      setAuthData({ token: accessToken, user: res.data.user });
       toast.success('Signup successful!');
+      navigate('/');
     } catch (err) {
       console.error('Error:', err);
-
-      if (err.response) {
-        // Server responded with a status code outside of the 2xx range
-        toast.error('Signup failed: ' + (err.response.data.message || 'Something went wrong.'));
-      } else if (err.request) {
-        // No response was received from the server
-        toast.error('Network error: Please check your connection.');
-      } else {
-        // Error occurred while setting up the request
-        toast.error('Error: ' + err.message);
-      }
     }
   };
 
@@ -137,7 +130,7 @@ function Signup() {
         </form>
         <p className="my-4 text-textSecondary text-right">
           আপনার ইতিমধ্যে একাউন্ট আছে?{' '}
-          <Link to="/login" className="text-blue-500">
+          <Link to="/signin" className="text-blue-500">
             লগিন করুন
           </Link>
         </p>

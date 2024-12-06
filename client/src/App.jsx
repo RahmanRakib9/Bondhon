@@ -3,6 +3,9 @@ import Home from './pages/Home';
 import { Route, Router, Routes } from 'react-router-dom';
 import Products from './pages/Products';
 import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import DashboardProducts from './pages/dashboard/DashboardProducts';
+import AddProduct from './pages/dashboard/AddProduct';
 function App() {
   return (
     <main className="mx-auto rounded-md">
@@ -14,16 +17,20 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/dashboard/products" element={<DashboardProducts />} />
+          <Route path="/dashboard/add-product" element={<AddProduct />} />
           {/* <Route path="/register" element={<Register />} /> */}
-          {/* Protected Routes */}
+          {/* Protected Routes  */}
+
           {/* <Route
-              path="/dashboard/*"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            > */}
+            path="/dashboard/*"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          ></Route> */}
           {/* Nested Dashboard Routes */}
           {/* <Route path="overview" element={<Overview />} />
               <Route path="reports" element={<Reports />} />

@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Navbar() {
+  const { authData } = useContext(AuthContext);
   return (
     <div className="navbar  space-x-10">
       <div className="flex-1">
@@ -70,7 +73,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="dropdown dropdown-end">
+        {/* <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               <img
@@ -93,7 +96,19 @@ function Navbar() {
               <a>Logout</a>
             </li>
           </ul>
-        </div>
+        </div> */}
+
+        {authData.user && (
+          <div className="mx-4px">
+            <div>{authData?.user?.name}</div>
+
+            {authData.user.role === 'FARMER' && (
+              <div>
+                <button className="btn-primary">Dashboard</button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
