@@ -4,8 +4,8 @@ import productRoutes from "./product.route";
 
 const router = express.Router();
 
-router.use('/auth', authRouter);
+router.use('/auth',authRouter);
 
-router.use('/products', productRoutes);
+router.use('/',productRoutes);
 
 export default router;

@@ -42,9 +42,28 @@ async function handleGetProducts(
     }
 }
 
+async function handleGetWeatherWithNotifications(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    try {
+        const weatherData = await productServices.getWeatherWithNotifications();
+
+        res.status(200).json({
+            success: true,
+            message: "Weather data and notifications retrieved successfully",
+            data: weatherData,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 const productControllers = {
     handleCreateProduct,
     handleGetProducts,
+    handleGetWeatherWithNotifications
 }
 
 export default productControllers;

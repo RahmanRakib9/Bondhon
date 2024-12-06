@@ -3,10 +3,12 @@ import productControllers from "../controllers/product.controller";
 
 const router = express.Router();
 
-router.post('/', productControllers.handleCreateProduct)
+router.post('/products', productControllers.handleCreateProduct)
 
-router.get('/', productControllers.handleGetProducts)
+router.get('/products', productControllers.handleGetProducts)
 
-const productRoutes=router;
+router.get('/weather', productControllers.handleGetWeatherWithNotifications)
+
+const productRoutes = router;
 
 export default productRoutes;
