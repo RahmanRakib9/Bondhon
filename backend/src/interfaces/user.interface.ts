@@ -1,4 +1,4 @@
-import { User_Role } from '../constants/user.constant';
+import { User_Role } from "../constants/user.constant";
 
 interface IUser {
   name: string;
