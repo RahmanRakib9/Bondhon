@@ -23,8 +23,28 @@ async function handleCreateProduct(
     }
 }
 
+async function handleGetProducts(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const products = await productServices.getProducts();
+
+        res.status(201).json({
+            success: true,
+            statusCode: 201,
+            message: 'Product retrieved successfully',
+            products,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 const productControllers = {
     handleCreateProduct,
+    handleGetProducts,
 }
 
 export default productControllers;

@@ -7,7 +7,14 @@ const createProduct = async (productPayload: IProduct) => {
     return product;
 };
 
+const getProducts = async () => {
+    const products = await Product.find();
+
+    return products;
+};
+
 const productServices={
     createProduct,
+    getProducts,
 }
 export default productServices;

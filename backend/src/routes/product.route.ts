@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.post('/', productControllers.handleCreateProduct)
 
+router.get('/', productControllers.handleGetProducts)
+
 const productRoutes=router;
 
 export default productRoutes;
