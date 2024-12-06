@@ -7,6 +7,7 @@ import Signin from './pages/Signin';
 import DashboardProducts from './pages/dashboard/DashboardProducts';
 import AddProduct from './pages/dashboard/AddProduct';
 import About from './pages/About';
+import Footer from './components/Footer';
 function App() {
   return (
     <main className="mx-auto rounded-md">
