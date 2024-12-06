@@ -17,7 +17,7 @@ const registerUser = async (userPayload: IUser) => {
 };
 
 const loginUser = async (userLoginPayload: ILoginUser) => {
-    const user = await User.findOne({ email: userLoginPayload.email });
+    const user = await User.findOne({ email: userLoginPayload.phoneNumber });
 
     if (!user) {
         throw new Error("User Not Exist!");
