@@ -21,6 +21,11 @@ const getProducts = async () => {
     return products;
 };
 
+const getProductsBySeller = async (sellerId: string) => {
+    const products = await Product.find({ createdBy: sellerId });
+    return products;
+};
+
 const processWeatherData = (data: any) => {
     const notifications: any[] = [];
 
@@ -85,5 +90,6 @@ const productServices={
     createProduct,
     getProducts,
     getWeatherWithNotifications,
+    getProductsBySeller,
 }
 export default productServices;
