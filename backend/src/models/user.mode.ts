@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { model, Schema } from 'mongoose';
 import IUser from '../interfaces/user.interface';
-import { User_Role } from '../constants/user.constant';
 import bcrypt from 'bcrypt';
 
 const userSchema = new Schema<IUser>(
@@ -22,6 +21,17 @@ const userSchema = new Schema<IUser>(
   },
   { timestamps: true },
 );
+
+userSchema.pre('save', async function (next) {
+  const user = this;
+
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(process.env.SALT_ROUND),
+  );
+
+  next();
+});
 
 
 export const User = model('User', userSchema);

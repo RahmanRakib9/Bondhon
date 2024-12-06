@@ -23,7 +23,30 @@ async function handleRegisterUser(
     }
 }
 
+async function handleLoginUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const userLoginPayload = req.body;
+
+        const accessToken =
+            await authServices.loginUser(userLoginPayload);
+
+        res.status(200).json({
+            success: true,
+            statusCode: 200,
+            message: 'User Logged-in successfully',
+            accessToken,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 const authControllers = {
     handleRegisterUser,
+    handleLoginUser,
 }
 export default authControllers;
