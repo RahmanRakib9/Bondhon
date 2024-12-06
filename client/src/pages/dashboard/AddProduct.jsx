@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
-import apiClient from '../../config/axiosConfig';
+import apiClient from '../../config/axiosConfig'; // Assuming you have the axios config
+import toast from 'react-hot-toast';
 
 function AddProduct() {
   const [formData, setFormData] = useState({
     name: '',
     price: '',
     location: '',
-    image: null,
+    image: '', // Use a URL string for the image
     expected_quantity: '',
     expected_produce_month: '',
-    description: ''
+    description: '',
   });
 
   const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'image') {
-      setFormData({ ...formData, image: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError(null);
 
     try {
+      // Create a FormData object
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('price', formData.price);
@@ -36,31 +34,32 @@ function AddProduct() {
       formDataToSend.append('expected_quantity', formData.expected_quantity);
       formDataToSend.append('expected_produce_month', formData.expected_produce_month);
       formDataToSend.append('description', formData.description);
+      formDataToSend.append('image', formData.image); // Just append the URL string for image
 
-      if (formData.image) {
-        formDataToSend.append('image', formData.image);
-      }
+      console.log(formData);
 
-      const res = await apiClient.post('/add-products',formDataToSend);
+      // Send the request
+      const res = await apiClient.post('/products', formDataToSend);
+      console.log(res);
 
-      if (!res.ok) {
+      if (res.status !== 200) {
         throw new Error(`Failed to add product: ${res.statusText}`);
       }
 
-      const data = await res.json();
+      const data = res.data;
       console.log('Product added successfully:', data);
 
-      // Reset form on successful submission
+      // Reset the form on successful submission
       setFormData({
         name: '',
         price: '',
         location: '',
-        image: null,
+        image: '', // Reset the image URL input
         expected_quantity: '',
         expected_produce_month: '',
-        description: ''
+        description: '',
       });
-      alert('Product added successfully!');
+      toast.success('Product added successfully!');
     } catch (err) {
       console.error('Error adding product:', err);
       setError(err.message || 'Something went wrong!');
@@ -73,7 +72,7 @@ function AddProduct() {
         <Sidebar />
       </div>
 
-      <div className='p-5'>
+      <div className="p-5">
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-2xl font-bold mb-4">পণ্যে যোগ করুন</h2>
           {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -98,7 +97,7 @@ function AddProduct() {
             {/* Product Price */}
             <div>
               <label htmlFor="price" className="block font-medium">
-                মূল্য 
+                মূল্য
               </label>
               <input
                 type="number"
@@ -178,18 +177,20 @@ function AddProduct() {
               />
             </div>
 
-            {/* Product Image */}
+            {/* Product Image URL */}
             <div>
               <label htmlFor="image" className="block font-medium">
-                ছবি আপলোড করুন
+                পণ্যের ছবি URL
               </label>
               <input
-                type="file"
+                type="url"
                 id="image"
                 name="image"
-                accept="image/*"
+                value={formData.image}
                 onChange={handleChange}
-                className="file-input file-input-bordered w-full"
+                placeholder="ছবির URL লিখুন"
+                className="input input-bordered w-full"
+                required
               />
             </div>
 

@@ -6,8 +6,7 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import DashboardProducts from './pages/dashboard/DashboardProducts';
 import AddProduct from './pages/dashboard/AddProduct';
-import Gethelp from './pages/dashboard/Gethelp';
-import Footer from './components/Footer';
+import About from './pages/About';
 function App() {
   return (
     <main className="mx-auto rounded-md">
@@ -20,6 +19,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/dashboard/products" element={<DashboardProducts />} />
           <Route path="/dashboard/add-product" element={<AddProduct />} />
           {/* <Route path="/register" element={<Register />} /> */}
