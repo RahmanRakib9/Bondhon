@@ -17,13 +17,13 @@ function Sidebar() {
           <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li>
-              <Link to="/dashboard/products">All product</Link>
+              <Link to="/dashboard/products">পণ্য</Link>
             </li>
             <li>
-              <Link to="/dashboard/add-product">Add Product</Link>
+              <Link to="/dashboard/add-product">পণ্য যোগ করুন</Link>
             </li>
             <li>
-              <Link to="/dashboard/get-help">Get help</Link>
+              <Link to="/dashboard/get-help">প্রস্তাবনা</Link>
             </li>
           </ul>
         </div>
