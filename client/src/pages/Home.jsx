@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import data from '../../data';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 
 function Home() {
+  const navigate = useNavigate()
   return (
     <section className="main space-y-10">
       {/* <Navbar /> */}
@@ -43,6 +45,9 @@ function Home() {
             <ProductCard productData={item} key={item.id} />
           ))}
         </div>
+      </div>
+      <div className='flex flex-col items-center text-black rounded-md pb-10'> 
+        <button onClick={()=> navigate('/products')} className="btn btn-outline border-[#ffffff] text-textSecondary">আরো দেখুন</button>
       </div>
     </section>
   );

@@ -6,6 +6,8 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import DashboardProducts from './pages/dashboard/DashboardProducts';
 import AddProduct from './pages/dashboard/AddProduct';
+import Gethelp from './pages/dashboard/Gethelp';
+import Footer from './components/Footer';
 function App() {
   return (
     <main className="mx-auto rounded-md">
@@ -20,6 +22,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard/products" element={<DashboardProducts />} />
           <Route path="/dashboard/add-product" element={<AddProduct />} />
+          <Route path="/dashboard/get-help" element={<Gethelp />} />
           {/* <Route path="/register" element={<Register />} /> */}
           {/* Protected Routes  */}
 
@@ -39,6 +42,7 @@ function App() {
           {/* Catch-all Route for 404 */}
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
+        <Footer/>
       </div>
     </main>
   );

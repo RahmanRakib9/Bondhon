@@ -105,7 +105,10 @@ function Navbar() {
 
             {authData.user.role === 'FARMER' && (
               <div>
-                <button onClick={()=> router('/dashboard/products') } className="btn-primary">Dashboard</button>
+                <button onClick={()=> {
+                  router('/')
+                  localStorage.clear()
+                } } className="btn-primary">Logout</button>
               </div>
             )}
           </div>

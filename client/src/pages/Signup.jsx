@@ -37,7 +37,7 @@ function Signup() {
       }
       setAuthData({ token: accessToken, user: res.data.user });
       toast.success('Signup successful!');
-      navigate('/');
+      navigate('/dashboard/products');
     } catch (err) {
       console.error('Error:', err);
     }
