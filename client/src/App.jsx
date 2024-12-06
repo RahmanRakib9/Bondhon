@@ -6,7 +6,7 @@ import Signup from './pages/Signup';
 function App() {
   return (
     <main className="mx-auto rounded-md">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-2xl mx-auto">
         <Navbar />
 
         <Routes>

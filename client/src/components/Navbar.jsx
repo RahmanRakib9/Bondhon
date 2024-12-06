@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <div className="navbar  space-x-10">
+    <div className="navbar  space-x-10 bg-[#80a573]">
       <div className="flex-1">
         <img
           className="h-14 object-contain"
@@ -32,7 +32,7 @@ function Navbar() {
       <div className="mx-4">
         <Link
           to="/signup"
-          className="bg-[#97d139e7] text-green-900 py-1 px-4 rounded-full ring-2 ring-[#9dda3c] text-textSecondary
+          className="bg-[#97d139e7] text-green-900 py-1 px-4 rounded-full ring-2 ring-[#9dda3c]
         hover:bg-[#a0e2358e]"
         >
           একাউন্ট খুলুন

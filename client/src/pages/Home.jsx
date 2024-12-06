@@ -35,7 +35,7 @@ function Home() {
         </div>
       </div>
 
-      {/* <div className="bg-white w-full">
+      <div className="bg-white w-full">
         <h3 className="text-3xl text-center py-10 text-textSecondary">পণ্যের তালিকা</h3>
 
         <div className="grid grid-cols-1  md:grid-cols-3 gap-5">
@@ -43,7 +43,7 @@ function Home() {
             <ProductCard productData={item} key={item.id} />
           ))}
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }
