@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import apiClient from '../config/axiosConfig';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Signup() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phoneNumber: '',
     password: '',
     role: '',
   });
@@ -16,32 +19,42 @@ function Signup() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form reload
+    console.log('Form Data:', formData);
 
-    // try {
-    //   const res = await apiClient.post("/")
+    try {
+      const res = await apiClient.post('/auth/signup', formData);
 
-    //   if (!response.ok) {
-    //     throw new Error('Something went wrong!');
-    //   }
+      console.log('Response:', res.data);
+      const { token } = res.data;
+      if (token) {
+        localStorage.setItem('token', token);
+        console.log('Token saved to localStorage:', token);
+      }
 
-    //   const data = await response.json();
-    //   alert('Signup successful!');
-    //   console.log('Response:', data);
-    // } catch (err) {
-    //   setError(err.message);
-    // }
+      toast.success('Signup successful!');
+    } catch (err) {
+      console.error('Error:', err);
+
+      if (err.response) {
+        // Server responded with a status code outside of the 2xx range
+        toast.error('Signup failed: ' + (err.response.data.message || 'Something went wrong.'));
+      } else if (err.request) {
+        // No response was received from the server
+        toast.error('Network error: Please check your connection.');
+      } else {
+        // Error occurred while setting up the request
+        toast.error('Error: ' + err.message);
+      }
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <div className="p-6 border-2 border-gray-200 rounded-lg shadow-lg w-full max-w-lg bg-white space-y-6">
         <h1 className="text-2xl font-bold text-center text-gray-700">সাইনআপ ফর্ম</h1>
-
         {error && <div className="text-red-500 text-center">{error}</div>}
-
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <label className="block">
@@ -76,7 +89,7 @@ function Signup() {
             <span className="text-gray-600">আপনার ফোন নাম্বার লিখুন</span>
             <input
               type="number"
-              name="phone"
+              name="phoneNumber"
               placeholder="আপনার ফোন নাম্বার"
               className="input input-bordered w-full mt-1"
               value={formData.phone}
@@ -112,8 +125,8 @@ function Signup() {
               <option value="" disabled>
                 আপনার পদ বাচাই করুন
               </option>
-              <option value="farmer">কৃষক</option>
-              <option value="buyer">ক্রেতা</option>
+              <option value="FARMER">কৃষক</option>
+              <option value="BUYER">ক্রেতা</option>
             </select>
           </label>
 
@@ -122,7 +135,21 @@ function Signup() {
             Signup Now
           </button>
         </form>
+        <p className="my-4 text-textSecondary text-right">
+          আপনার ইতিমধ্যে একাউন্ট আছে?{' '}
+          <Link to="/login" className="text-blue-500">
+            লগিন করুন
+          </Link>
+        </p>
       </div>
+
+      {/* 
+      
+      
+      
+      
+      
+      */}
     </div>
   );
 }
