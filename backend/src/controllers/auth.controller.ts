@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import authServices from '../services/auth.service';
 import IUser from '../interfaces/user.interface';
+import { ILoginUser } from '../interfaces/auth.interface';
 
 async function handleRegisterUser(
     req: Request,
@@ -29,7 +30,7 @@ async function handleLoginUser(
     next: NextFunction,
 ) {
     try {
-        const userLoginPayload = req.body;
+        const userLoginPayload:ILoginUser = req.body;
 
         const accessToken =
             await authServices.loginUser(userLoginPayload);
