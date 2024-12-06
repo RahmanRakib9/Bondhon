@@ -23,7 +23,7 @@ function Sidebar() {
               <Link to="/dashboard/add-product">পণ্য যোগ করুন</Link>
             </li>
             <li>
-              <Link to="/dashboard/get-help">প্রস্তাবনা</Link>
+              <Link to="/dashboard/get-help">আবহাওয়া</Link>
             </li>
           </ul>
         </div>

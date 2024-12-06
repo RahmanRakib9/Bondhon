@@ -22,6 +22,8 @@ function App() {
           <Route path="/about-us" element={<About />} />
           <Route path="/dashboard/products" element={<DashboardProducts />} />
           <Route path="/dashboard/add-product" element={<AddProduct />} />
+          {/* <Route path="/register" element={<Register />} /> */}
+          {/* Protected Routes  */}
 
           {/* <Route
             path="/dashboard/*"
@@ -39,6 +41,7 @@ function App() {
           {/* Catch-all Route for 404 */}
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
+        <Footer/>
       </div>
     </main>
   );

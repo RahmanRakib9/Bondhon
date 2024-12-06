@@ -1,30 +1,32 @@
-# Bondhon  
+# Bondhon - Technical Details
+## Technology Stack
 
-Bondhon is an innovative platform designed to empower farmers and buyers by providing a seamless way to invest, sell, and purchase fresh food directly. By eliminating middlemen, it fosters fair trade and better returns for farmers while ensuring quality products for buyers.  
+* Frontend:
+  * React.js, TypeScript
+* Backend
+  * Node.js, Express.js, TypeScript
+  * MongoDB (Mongoose)
+  * JWT Authentication, bcrypt.js for password hashing
+  * WeatherAPI integration for weather notifications
 
-## 🌟 Features  
+* Deployment:
 
-- **Direct Connections**: Farmers and buyers interact directly, enhancing trust and transparency.  
-- **AI-Powered Insights**: Utilize AI and data to train farmers and boost productivity.  
-- **Sustainable Development Goals (SDGs)**: Focused on achieving SDGs 3 (Good Health) and 11 (Sustainable Cities).  
+  * FrontEnd[live url](https://lively-kataifi-005380.netlify.app/)
+  * Backend[live url](https://bondhon-eight.vercel.app/)
 
-## 🚀 Technologies Used  
+# API Details
+1. User Authentication
+* Endpoint: `POST /api/auth/register`
+* Endpoint: `POST /api/auth/login`
+* Endpoint : `POST /api/products`
+* Endpoint : `GET /api/products`
+* Endpoint: `GET /api/products/seller/:sellerId`
 
-- **Frontend**: [React.js](https://reactjs.org/), [Tailwind CSS](https://tailwindcss.com/)  
-- **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/), [MongoDB](https://www.mongodb.com/)  
-- **AI Tools**: Python (TensorFlow, Scikit-learn)  
-- **Other Tools**: Docker, Firebase  
+# Seller (Farmer) Dashboard
+The Seller Dashboard is a dedicated interface for farmers to manage their product listings. Farmers must register as a SELLER to access this dashboard.
+## How to Access the Seller Dashboard:
+* Register as a SELLER: During the registration process, ensure that you select `কৃষক` as your role.
+* Login: After registering, login to your account and access the Seller Dashboard to manage your products.
 
-## 📖 How It Works  
 
-1. **Farmers**: Create an account, list products, and receive insights on improving yield.  
-2. **Buyers**: Browse products, invest in farming, or directly purchase fresh produce.  
-3. **AI-Powered Training**: Farmers get personalized training and recommendations.  
-
-## 🛠️ Getting Started  
-
-### Prerequisites  
-
-- [Node.js](https://nodejs.org/) installed  
-- [MongoDB](https://www.mongodb.com/) set up  
 
