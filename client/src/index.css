@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-primary;
+  height: 120vh;
+  background-image: url('./assets/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.btn-primary {
+  @apply bg-primary text-textPrimary px-3 py-2 rounded-md;
+}
+.btn-primary:hover {
+  @apply ring-2 ring-secondary shadow-md;
+}
