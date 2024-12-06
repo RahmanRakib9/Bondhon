@@ -1,6 +1,7 @@
 # Bondhon - Technical Details
-## Technology Stack
+Bondhon is a monorepo project that contains both the frontend and backend in a single repository. The frontend is built with React.js and TypeScript, while the backend is built with Node.js, Express.js, and TypeScript. The project aims to connect farmers directly with urban buyers to reduce middlemen and food wastage.
 
+## Technology Stack
 * Frontend:
   * React.js, TypeScript
 * Backend
