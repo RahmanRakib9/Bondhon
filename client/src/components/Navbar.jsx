@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 
 function Navbar() {
   const { authData } = useContext(AuthContext);
+  const router = useNavigate();
   return (
     <div className="navbar  space-x-10 bg-[#80a573]">
       <div className="flex-1">
@@ -108,7 +109,7 @@ function Navbar() {
 
             {authData.user.role === 'FARMER' && (
               <div>
-                <button className="btn-primary">Dashboard</button>
+                <button onClick={()=> router('/dashboard/products') } className="btn-primary">Dashboard</button>
               </div>
             )}
           </div>
