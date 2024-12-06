@@ -4,7 +4,7 @@ const app = express();
 
 
 app.get('/',(req,res)=>{
-    res.send("Working")
+    res.send("hello from bondhon!")
 })
 
 app.listen(3000);
