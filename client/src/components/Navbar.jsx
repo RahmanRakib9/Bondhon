@@ -19,7 +19,7 @@ function Navbar() {
         </Link>
       </div>
       <div className="mx-4">
-        <Link to="/" className="text-textPrimary">
+        <Link to="/products" className="text-textPrimary">
           পণ্য দেখুন
         </Link>
       </div>

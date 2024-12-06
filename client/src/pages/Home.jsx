@@ -1,9 +1,11 @@
 import data from '../../data';
+import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 
 function Home() {
   return (
-    <section className="space-y-10 mt-32">
+    <section className="main space-y-10">
+      {/* <Navbar /> */}
       <div className="flex justify-center content-center py-10 px-2">
         <div className="space-y-8 text-center">
           <h3 className="text-2xl md:text-5xl font-semibold text-textPrimary">কৃষক ও ক্রেতার মধ্যে সেতুবন্ধন</h3>
@@ -33,15 +35,15 @@ function Home() {
         </div>
       </div>
 
-      <div>
-        <h3 className="text-3xl text-center py-10 text-textPrimary">পণ্যের তালিকা</h3>
+      {/* <div className="bg-white w-full">
+        <h3 className="text-3xl text-center py-10 text-textSecondary">পণ্যের তালিকা</h3>
 
         <div className="grid grid-cols-1  md:grid-cols-3 gap-5">
           {data.map(item => (
             <ProductCard productData={item} key={item.id} />
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

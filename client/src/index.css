@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary;
-  height: 120vh;
+  /* @apply bg-primary;
+  height: 120vh; */
+}
+.main {
   background-image: url('./assets/background.svg');
   background-size: cover;
   background-repeat: no-repeat;
