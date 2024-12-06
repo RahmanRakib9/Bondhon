@@ -12,8 +12,8 @@ Bondhon is a monorepo project that contains both the frontend and backend in a s
 
 * Deployment:
 
-  * FrontEnd[live url](https://lively-kataifi-005380.netlify.app/)
-  * Backend[live url](https://bondhon-eight.vercel.app/)
+  * FrontEnd [live url](https://lively-kataifi-005380.netlify.app/)
+  * Backend [live url](https://bondhon-eight.vercel.app/)
 
 # API Details
 1. User Authentication
