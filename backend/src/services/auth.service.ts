@@ -4,7 +4,6 @@ import { User } from "../models/user.mode";
 import { comparePasswordFields } from "../utils/comparePassword";
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
-
 const registerUser = async (userPayload: IUser) => {
     const user = await User.findOne({ email: userPayload.email });
 

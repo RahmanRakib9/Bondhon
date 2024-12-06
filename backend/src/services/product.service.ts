@@ -2,13 +2,6 @@ import IProduct from "../interfaces/product.interface";
 import { Product } from "../models/product.model";
 import axios from "axios";
 
-const WEATHER_API_KEY = "dee18a1bce2f400da5684900240612";
-const WEATHER_API_URL = "http://api.weatherapi.com/v1/forecast.json";
-
-console.log("Weather API Key:", process.env.WEATHER_API_KEY);
-console.log("Weather API URL:", process.env.WEATHER_API_URL);
-
-
 const createProduct = async (productPayload: IProduct) => {
     const product = await Product.create(productPayload);
 
@@ -68,7 +61,7 @@ const getWeatherWithNotifications = async () => {
 
     const weatherPromises = locations.map(async (location) => {
         const encodedLocation = encodeURIComponent(location);
-        const url = `${WEATHER_API_KEY}?key=${WEATHER_API_URL}&q=${encodedLocation}&days=3`;
+        const url = `${process.env.WEATHER_API_URL}?key=${process.env.WEATHER_API_KEY}&q=${encodedLocation}&days=3`;
 
         const response = await axios.get(url);
 
@@ -86,7 +79,7 @@ const getWeatherWithNotifications = async () => {
     return weatherData;
 };
 
-const productServices={
+const productServices = {
     createProduct,
     getProducts,
     getWeatherWithNotifications,
