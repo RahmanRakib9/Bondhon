@@ -28,24 +28,22 @@ function Navbar() {
         </Link>
       </div>
       <div className="mx-4">
-        <Link to="/" className="text-textPrimary">
+        <Link to="/about-us" className="text-textPrimary">
           আমাদের সর্ম্পকে জানুন
         </Link>
       </div>
 
-      {
-        !authData.user  && (
-          <div className="mx-4">
-        <Link
-          to="/signup"
-          className="bg-[#97d139e7] text-green-900 py-1 px-4 rounded-full ring-2 ring-[#9dda3c]
+      {!authData.user && (
+        <div className="mx-4">
+          <Link
+            to="/signup"
+            className="bg-[#97d139e7] text-green-900 py-1 px-4 rounded-full ring-2 ring-[#9dda3c]
         hover:bg-[#a0e2358e]"
-        >
-          একাউন্ট খুলুন
-        </Link>
-      </div>
-        )
-      }
+          >
+            একাউন্ট খুলুন
+          </Link>
+        </div>
+      )}
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -109,7 +107,9 @@ function Navbar() {
 
             {authData.user.role === 'FARMER' && (
               <div>
-                <button onClick={()=> router('/dashboard/products') } className="btn-primary">Dashboard</button>
+                <button onClick={() => router('/dashboard/products')} className="btn-primary">
+                  Dashboard
+                </button>
               </div>
             )}
           </div>
