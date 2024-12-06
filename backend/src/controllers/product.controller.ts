@@ -42,6 +42,27 @@ async function handleGetProducts(
     }
 }
 
+async function getProductsBySeller(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const sellerId = req.params.sellerId;
+
+        const products = await productServices.getProductsBySeller(sellerId);
+
+        res.status(201).json({
+            success: true,
+            statusCode: 200,
+            message: 'Product retrieved successfully',
+            products,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 async function handleGetWeatherWithNotifications(
     req: Request,
     res: Response,
@@ -63,7 +84,8 @@ async function handleGetWeatherWithNotifications(
 const productControllers = {
     handleCreateProduct,
     handleGetProducts,
-    handleGetWeatherWithNotifications
+    handleGetWeatherWithNotifications,
+    getProductsBySeller
 }
 
 export default productControllers;
